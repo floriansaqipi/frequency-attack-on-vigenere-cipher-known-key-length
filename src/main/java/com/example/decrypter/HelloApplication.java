@@ -12,11 +12,8 @@ import java.util.Scanner;
 public class HelloApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        Scanner scanner = new Scanner(new File("src/main/java/com/example/decrypter/files/input.txt"));
-
-        while (scanner.hasNext()){
-            System.out.println(scanner.next());
-        }
+        File input =  new File("src/main/java/com/example/decrypter/files/input.txt");
+        File output = new File("src/main/java/com/example/decrypter/files/output.txt");
 
         javafx.application.Platform.exit();
     }
