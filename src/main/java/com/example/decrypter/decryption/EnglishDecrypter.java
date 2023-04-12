@@ -10,4 +10,9 @@ public class EnglishDecrypter extends Decrypter{
     public EnglishDecrypter(File input, File output, int keyLength){
         super(input,output,keyLength);
     }
+
+    @Override
+    public void initializeCharFrequencyHashMaps(){
+
+    }
 }

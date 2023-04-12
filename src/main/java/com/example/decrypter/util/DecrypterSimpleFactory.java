@@ -10,6 +10,10 @@ public class DecrypterSimpleFactory {
 
     private DecrypterSimpleFactory(){}
 
+    public static Decrypter getInstance(File input, File output){
+        return  new EnglishDecrypter(input,output);
+    }
+
     public static Decrypter getInstance(File input, File output, Language language){
         return switch (language) {
             case ALBANIAN -> new AlbanianDecrypter(input,output);
