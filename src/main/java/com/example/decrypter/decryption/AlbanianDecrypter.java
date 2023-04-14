@@ -10,4 +10,9 @@ public class AlbanianDecrypter extends Decrypter{
     public AlbanianDecrypter(File input, File output, int keyLength){
         super(input,output,keyLength);
     }
+
+    @Override
+    public void initializeCharFrequencyHashMaps() {
+        System.out.println("initializeCharFrequencyHashMaps");
+    }
 }
