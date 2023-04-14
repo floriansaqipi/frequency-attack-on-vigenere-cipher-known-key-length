@@ -19,6 +19,7 @@ public class HelloApplication extends Application {
         File output = new File("src/main/java/com/example/decrypter/files/output.txt");
 
         Decrypter decrypter = DecrypterSimpleFactory.getInstance(input,output, Language.ENGLISH);
+        decrypter.extractCharFrequency();
 
         javafx.application.Platform.exit();
     }
