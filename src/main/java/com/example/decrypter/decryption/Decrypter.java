@@ -94,12 +94,17 @@ abstract public class Decrypter implements Analysis{
 
     @Override
     public void mapCharByFrequency() {
-
-    }
-
-    @Override
-    public void repeatDecryptionByCol() {
-
+        int i  = 0, j = 0;
+        String currentAlphabetFreq;
+        for(HashMap<Character,Integer> hashMap : this.sortedCharFrequencyInputMaps){
+            j = 0;
+            currentAlphabetFreq = this.frequencyDataStrings.get(i);
+            for(Map.Entry<Character,Integer> entry: hashMap.entrySet()){
+                this.frequencyMappedHashMaps.get(i).put(entry.getKey(),currentAlphabetFreq.charAt(j));
+                j++;
+            }
+            i++;
+        }
     }
 
     @Override
