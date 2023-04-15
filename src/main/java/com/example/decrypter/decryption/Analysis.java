@@ -9,7 +9,6 @@ public interface Analysis {
     void extractCharFrequency(File file, ArrayList<HashMap<Character, Integer>> hashMaps);
 
     void mapCharByFrequency();
-    void repeatDecryptionByCol();
     void writeDecryptedTextToFile();
     void performDecryption();
 }
