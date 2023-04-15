@@ -28,6 +28,7 @@ abstract public class Decrypter implements Analysis{
     private ArrayList<HashMap<Character,Integer>> charFrequencyInputHashMaps = new ArrayList<>();
 
     private ArrayList<String> frequencyDataStrings = new ArrayList<>();
+    private ArrayList<HashMap<Character,Character>> frequencyMappedHashMaps = new ArrayList<>();
     protected Decrypter(File input, File output, File data){
         this.input = input;
         this.output = output;
@@ -39,7 +40,14 @@ abstract public class Decrypter implements Analysis{
         this(input,output,data);
         this.keyLength = keyLength;
     }
+
     abstract public void initializeCharFrequencyHashMaps();
+    
+    private void initializeFrequencyMappedHashMaps(){
+        for(int i = 0;i < this.keyLength; i++){
+            this.frequencyMappedHashMaps.add(new HashMap<Character,Character>());
+        }
+    }
 
     private void initializeSortedCharFrequencyMaps(){
         for(HashMap<Character,Integer> hashMap : this.charFrequencyInputHashMaps){
@@ -83,7 +91,7 @@ abstract public class Decrypter implements Analysis{
             freqAlphabet = "";
         }
     }
-    
+
     @Override
     public void mapCharByFrequency() {
 
