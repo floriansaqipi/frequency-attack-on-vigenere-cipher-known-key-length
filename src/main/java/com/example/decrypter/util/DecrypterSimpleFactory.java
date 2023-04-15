@@ -10,21 +10,21 @@ public class DecrypterSimpleFactory {
 
     private DecrypterSimpleFactory(){}
 
-    public static Decrypter getInstance(File input, File output){
-        return  new EnglishDecrypter(input,output);
+    public static Decrypter getInstance(File input, File output, File data){
+        return  new EnglishDecrypter(input,output,data);
     }
 
-    public static Decrypter getInstance(File input, File output, Language language){
+    public static Decrypter getInstance(File input, File output, File data, Language language){
         return switch (language) {
-            case ALBANIAN -> new AlbanianDecrypter(input,output);
-            default ->  new EnglishDecrypter(input,output);
+            case ALBANIAN -> new AlbanianDecrypter(input,output, data);
+            default ->  new EnglishDecrypter(input,output, data);
         };
     }
 
-    public static Decrypter getInstance(File input, File output, int keyLength, Language language){
+    public static Decrypter getInstance(File input, File output, File data ,int keyLength, Language language){
         return switch (language) {
-            case ALBANIAN -> new AlbanianDecrypter(input,output,keyLength);
-            default ->  new EnglishDecrypter(input,output,keyLength);
+            case ALBANIAN -> new AlbanianDecrypter(input,output, data, keyLength);
+            default ->  new EnglishDecrypter(input,output, data ,keyLength);
         };
     }
 }
