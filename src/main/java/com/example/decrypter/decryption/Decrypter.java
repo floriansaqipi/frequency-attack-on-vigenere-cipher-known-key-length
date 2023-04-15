@@ -38,6 +38,7 @@ abstract public class Decrypter implements Analysis{
         this(input,output,data);
         this.keyLength = keyLength;
     }
+    abstract public void initializeCharFrequencyHashMaps();
 
     private void initializeSortedCharFrequencyMaps(){
         for(HashMap<Character,Integer> hashMap : this.charFrequencyInputHashMaps){
