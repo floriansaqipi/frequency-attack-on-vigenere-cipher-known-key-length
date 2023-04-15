@@ -1,5 +1,7 @@
 package com.example.decrypter.decryption;
 
+import com.example.decrypter.util.AlphabetMaps;
+
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
@@ -8,6 +10,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 abstract public class Decrypter implements Analysis{
@@ -16,6 +19,9 @@ abstract public class Decrypter implements Analysis{
 
     private File data;
     private int keyLength = 5;
+
+    private ArrayList<LinkedHashMap<Character,Integer>> sortedCharFrequencyDataMaps = new ArrayList<>();
+    private ArrayList<LinkedHashMap<Character,Integer>> sortedCharFrequencyInputMaps = new ArrayList<>();
 
     private ArrayList<HashMap<Character,Integer>> charFrequencyDataHashMaps = new ArrayList<>();
 
@@ -33,18 +39,16 @@ abstract public class Decrypter implements Analysis{
         this.keyLength = keyLength;
     }
 
-    abstract public void initializeCharFrequencyHashMaps();
-
-    //TODO improve method for getting by stream and by cols
-//    @Override
-//    public void extractCharFrequency() throws IOException {
-//        FrequencyAnalyzer freqAnalyzer = new FrequencyAnalyzer();
-//        Path filePath = this.input.toPath();
-//        String fileContent = Files.readString(filePath, StandardCharsets.UTF_8);
-//        this.charFrequencyMap = freqAnalyzer.analyze(fileContent);
-//        System.out.println(this.charFrequencyMap);
-//
-//    }
+    private void initializeSortedCharFrequencyMaps(){
+        for(HashMap<Character,Integer> hashMap : this.charFrequencyInputHashMaps){
+            LinkedHashMap<Character,Integer> linkedHashMap = AlphabetMaps.getValueSortedLinkedHashMap(hashMap);
+            this.sortedCharFrequencyInputMaps.add(linkedHashMap);
+        }
+        for(HashMap<Character,Integer> hashMap: this.charFrequencyDataHashMaps){
+            LinkedHashMap<Character,Integer> linkedMap = AlphabetMaps.getValueSortedLinkedHashMap(hashMap);
+            this.sortedCharFrequencyDataMaps.add(linkedMap);
+        }
+    }
 
     @Override
     public void extractCharFrequency(File file, ArrayList<HashMap<Character,Integer>> hashMaps) {
