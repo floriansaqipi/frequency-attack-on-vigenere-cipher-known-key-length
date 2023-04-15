@@ -13,6 +13,7 @@ public class EnglishDecrypter extends Decrypter{
 
     @Override
     public void initializeCharFrequencyHashMaps(){
+        //TODO remove the comments add the getKeyLength
         System.out.println("TEST" + this.getKeyLength());
         for(int i = 0 ; i< this.getKeyLength();i++){
             this.getCharFrequencyHashMaps().add(AlphabetMaps.getEnglishAlphabetMap());

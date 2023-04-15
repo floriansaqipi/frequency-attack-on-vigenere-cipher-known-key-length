@@ -30,6 +30,7 @@ abstract public class Decrypter implements Analysis{
 
     abstract public void initializeCharFrequencyHashMaps();
 
+    //TODO improve method for getting by stream and by cols
     @Override
     public void extractCharFrequency() throws IOException {
         FrequencyAnalyzer freqAnalyzer = new FrequencyAnalyzer();
