@@ -11,4 +11,11 @@ public class AlphabetMaps {
         }
         return hashMap;
     }
+    public static HashMap<Character, Integer> getAlbanianAlphabetMap(){
+        HashMap<Character, Integer> hashMap = new HashMap<>();
+        for(int i = 0; i<Alphabet.albanianAlphabet.length(); i++){
+            hashMap.put(Alphabet.albanianAlphabet.charAt(i),0);
+        }
+        return hashMap;
+    }
 }
