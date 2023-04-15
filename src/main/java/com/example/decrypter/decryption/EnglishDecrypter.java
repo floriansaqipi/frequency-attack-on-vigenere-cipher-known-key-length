@@ -3,12 +3,12 @@ package com.example.decrypter.decryption;
 import java.io.File;
 
 public class EnglishDecrypter extends Decrypter{
-    public EnglishDecrypter(File input, File output) {
-        super(input, output);
+    public EnglishDecrypter(File input, File output, File data) {
+        super(input, output, data);
     }
 
-    public EnglishDecrypter(File input, File output, int keyLength){
-        super(input,output,keyLength);
+    public EnglishDecrypter(File input, File output, File data , int keyLength){
+        super(input, output, data, keyLength);
     }
 
     @Override

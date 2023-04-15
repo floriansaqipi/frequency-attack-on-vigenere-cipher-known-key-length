@@ -3,15 +3,15 @@ package com.example.decrypter.decryption;
 import java.io.File;
 
 public class AlbanianDecrypter extends Decrypter{
-    public AlbanianDecrypter(File input, File output){
-        super(input,output);
+    public AlbanianDecrypter(File input, File output, File data){
+        super(input,output,data);
     }
 
-    public AlbanianDecrypter(File input, File output, int keyLength){
-        super(input,output,keyLength);
+    public AlbanianDecrypter(File input, File output, File data, int keyLength){
+        super(input,output, data ,keyLength);
     }
     @Override
     public void initializeCharFrequencyHashMaps(){
-      //add initialize implementation
+      //TODO add initialize implementation
     }
 }
