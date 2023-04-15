@@ -1,5 +1,7 @@
 package com.example.decrypter.decryption;
 
+import com.example.decrypter.util.AlphabetMaps;
+
 import java.io.File;
 
 public class AlbanianDecrypter extends Decrypter{
@@ -12,6 +14,10 @@ public class AlbanianDecrypter extends Decrypter{
     }
     @Override
     public void initializeCharFrequencyHashMaps(){
-      //TODO add initialize implementation
+        for(int i = 0 ; i< this.getKeyLength();i++){
+            this.getCharFrequencyInputHashMaps().add(AlphabetMaps.getAlbanianAlphabetMap());
+            this.getCharFrequencyDataHashMaps().add(AlphabetMaps.getAlbanianAlphabetMap());
+        }
+
     }
 }

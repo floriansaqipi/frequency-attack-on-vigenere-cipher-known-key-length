@@ -89,4 +89,15 @@ abstract public class Decrypter implements Analysis{
     public void performDecryption() {
         extractCharFrequency(this.input,this.charFrequencyDataHashMaps);
     }
+    public int getKeyLength(){
+        return this.keyLength;
+    }
+
+    public ArrayList<HashMap<Character, Integer>> getCharFrequencyInputHashMaps(){
+        return this.charFrequencyInputHashMaps;
+    }
+    public ArrayList<HashMap<Character, Integer>> getCharFrequencyDataHashMaps(){
+        return this.charFrequencyDataHashMaps;
+    }
 }
+
