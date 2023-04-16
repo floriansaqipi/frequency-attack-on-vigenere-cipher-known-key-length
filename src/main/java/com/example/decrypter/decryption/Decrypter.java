@@ -4,6 +4,7 @@ import com.example.decrypter.util.AlphabetMaps;
 
 import java.io.File;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -92,6 +93,8 @@ abstract public class Decrypter implements Analysis{
         }
     }
 
+
+
     @Override
     public void mapCharByFrequency() {
         int i  = 0, j = 0;
@@ -109,7 +112,23 @@ abstract public class Decrypter implements Analysis{
 
     @Override
     public void writeDecryptedTextToFile() {
-
+        try{
+            FileReader fileReader = new FileReader(this.input.getPath());
+            FileWriter fileWriter = new FileWriter(this.output);
+            int character, currentCount; char charToWrite, currentChar;
+            for(int i = 0; (character = fileReader.read()) != -1; i = (i + 1) % this.keyLength){
+                currentChar = (char) character;
+                if(!Character.isAlphabetic(currentChar)){
+                    i--;
+                    continue;
+                }
+                charToWrite = this.frequencyMappedHashMaps.get(i).get(Character.toUpperCase(currentChar));
+                fileWriter.write(charToWrite);
+            }
+            fileReader.close(); fileWriter.close();
+        } catch (IOException ex){
+            ex.printStackTrace();
+        }
     }
 
     @Override
