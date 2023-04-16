@@ -180,7 +180,6 @@ abstract public class Decrypter implements Analysis{
         }
         System.out.println();
     }
-    
     public void printStats(){
         int i = 0, j = 0;
         for(LinkedHashMap<Character,Integer> linkedHashMap: this.sortedCharFrequencyInputMaps){
@@ -189,14 +188,11 @@ abstract public class Decrypter implements Analysis{
             printKeyColMapping(j++);
         }
     }
-
-
+    
     private void printInfo(){
         this.printFreqHashMaps();
         this.printStats();
     }
-
-
 
     @Override
     public void performDecryption() {
