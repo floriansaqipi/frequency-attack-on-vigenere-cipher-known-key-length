@@ -130,6 +130,13 @@ abstract public class Decrypter implements Analysis{
             ex.printStackTrace();
         }
     }
+    private int countedCharacters(LinkedHashMap<Character,Integer> linkedHashMap){
+        int sum = 0;
+        for(Integer val : linkedHashMap.values()){
+            sum += val;
+        }
+        return sum;
+    }
 
     @Override
     public void performDecryption() {
