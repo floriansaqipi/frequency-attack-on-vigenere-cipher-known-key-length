@@ -146,6 +146,23 @@ abstract public class Decrypter implements Analysis{
         }
     }
 
+    private void printGraph(LinkedHashMap<Character,Integer> sortedCharFrequencyMap){
+        double value = 0;
+        char character;
+        int totalChars = countedCharacters(sortedCharFrequencyMap);
+        for(Map.Entry<Character,Integer> entry: sortedCharFrequencyMap.entrySet()){
+            character = entry.getKey();
+            value = (entry.getValue()*1.0)/totalChars * 100;
+            System.out.printf("%c=%.2f",character,value);
+            for(int i = 0;i<value*10;i++){
+                System.out.print("░");
+
+            }
+            System.out.println();
+        }
+    }
+
+
     @Override
     public void performDecryption() {
         extractCharFrequency(this.input,this.charFrequencyDataHashMaps);
