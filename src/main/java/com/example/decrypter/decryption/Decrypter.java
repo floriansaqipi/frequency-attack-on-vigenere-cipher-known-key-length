@@ -162,6 +162,37 @@ abstract public class Decrypter implements Analysis{
         }
     }
 
+    public void printKeyColMapping(int index){
+        System.out.println("Key found for col:");
+        LinkedHashMap<Character,Integer> hashMap = this.sortedCharFrequencyInputMaps.get(index);
+        int length = hashMap.size();
+        String encryptedAlphabet = "";
+        for(Map.Entry<Character,Integer> entry : hashMap.entrySet()){
+            System.out.print(entry.getKey());
+            encryptedAlphabet += entry.getKey();
+        }
+        System.out.println();
+        System.out.println(String.valueOf('↓').repeat(length));
+        char charToGet;
+        for(int i = 0; i < length; i++){
+            charToGet = encryptedAlphabet.charAt(i);
+            System.out.print(this.frequencyMappedHashMaps.get(index).get(charToGet));
+        }
+        System.out.println();
+    }
+    public void printStats(){
+        int i = 0, j = 0;
+        for(LinkedHashMap<Character,Integer> linkedHashMap: this.sortedCharFrequencyInputMaps){
+            System.out.printf("================================================= Key Column : %d =================================================\n",++i);
+            printGraph(linkedHashMap);
+            printKeyColMapping(j++);
+        }
+    }
+    
+    private void printInfo(){
+        this.printFreqHashMaps();
+        this.printStats();
+    }
 
     @Override
     public void performDecryption() {
