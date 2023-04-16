@@ -112,21 +112,27 @@ abstract public class Decrypter implements Analysis{
 
     @Override
     public void writeDecryptedTextToFile() {
-        try{
-            FileReader fileReader = new FileReader(this.input.getPath());
-            FileWriter fileWriter = new FileWriter(this.output);
-            int character, currentCount; char charToWrite, currentChar;
-            for(int i = 0; (character = fileReader.read()) != -1; i = (i + 1) % this.keyLength){
+        try (FileReader fileReader = new FileReader(this.input.getPath());
+             FileWriter fileWriter = new FileWriter(this.output)) {
+
+            int character, currentCount;
+            char charToWrite, currentChar;
+            int i = 0;
+
+            while ((character = fileReader.read()) != -1) {
                 currentChar = (char) character;
-                if(!Character.isAlphabetic(currentChar)){
-                    i--;
+
+                if (!Character.isAlphabetic(currentChar)) {
                     continue;
                 }
-                charToWrite = this.frequencyMappedHashMaps.get(i).get(Character.toUpperCase(currentChar));
+
+                charToWrite = this.frequencyMappedHashMaps.get(i % this.keyLength)
+                        .get(Character.toUpperCase(currentChar));
+
                 fileWriter.write(charToWrite);
+                i++;
             }
-            fileReader.close(); fileWriter.close();
-        } catch (IOException ex){
+        } catch (IOException ex) {
             ex.printStackTrace();
         }
     }
