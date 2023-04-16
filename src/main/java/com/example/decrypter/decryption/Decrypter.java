@@ -131,6 +131,14 @@ abstract public class Decrypter implements Analysis{
         }
     }
 
+    public void printFreqHashMaps(){
+        int i = 0;
+        for(HashMap<Character,Integer> hashMap: this.charFrequencyInputHashMaps){
+            System.out.printf("================================================= Key Column : %d =================================================\n",++i);
+            System.out.println(hashMap);
+        }
+    }
+
     @Override
     public void performDecryption() {
         extractCharFrequency(this.input,this.charFrequencyDataHashMaps);
