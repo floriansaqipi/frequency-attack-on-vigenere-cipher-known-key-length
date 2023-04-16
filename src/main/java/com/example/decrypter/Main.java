@@ -20,8 +20,8 @@ public class Main extends Application {
 
         File output = new File("src/main/java/com/example/decrypter/files/output.txt");
 
-//        Decrypter decrypter = DecrypterSimpleFactory.getInstance(inputEnglish,output, dataEnglish, 5 ,Language.ENGLISH);
-        Decrypter decrypter = DecrypterSimpleFactory.getInstance(inputAlbanian,output, dataAlbanian, 5 ,Language.ALBANIAN);
+//        Decrypter decrypter = DecrypterSimpleFactory.getInstance(inputEnglish,output, dataEnglish, 9 ,Language.ENGLISH);
+        Decrypter decrypter = DecrypterSimpleFactory.getInstance(inputAlbanian,output, dataAlbanian, 6 ,Language.ALBANIAN);
         decrypter.performDecryption();
 
         Platform.exit();
