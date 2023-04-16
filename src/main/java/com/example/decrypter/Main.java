@@ -15,13 +15,13 @@ public class Main extends Application {
         File inputEnglish =  new File("src/main/java/com/example/decrypter/files/input.txt");
         File dataEnglish = new File("src/main/java/com/example/decrypter/files/data.txt");
 
-        File inputAlbanian =  new File("src/main/java/com/example/decrypter/files/input.txt");
-        File dataAlbanian = new File("src/main/java/com/example/decrypter/files/data.txt");
+        File inputAlbanian =  new File("src/main/java/com/example/decrypter/files/input_shqip.txt");
+        File dataAlbanian = new File("src/main/java/com/example/decrypter/files/data_shqip.txt");
 
         File output = new File("src/main/java/com/example/decrypter/files/output.txt");
 
-        Decrypter decrypter = DecrypterSimpleFactory.getInstance(dataEnglish,output, dataEnglish , 5 ,Language.ENGLISH);
-//        Decrypter decrypter = DecrypterSimpleFactory.getInstance(dataAlbanian,output, dataAlbanian , 5 ,Language.ENGLISH);
+//        Decrypter decrypter = DecrypterSimpleFactory.getInstance(inputEnglish,output, dataEnglish, 5 ,Language.ENGLISH);
+        Decrypter decrypter = DecrypterSimpleFactory.getInstance(inputAlbanian,output, dataAlbanian, 5 ,Language.ALBANIAN);
         decrypter.performDecryption();
 
         Platform.exit();

@@ -35,10 +35,14 @@ abstract public class Decrypter implements Analysis{
         this.output = output;
         this.data = data;
         this.initializeCharFrequencyHashMaps();
+        this.initializeFrequencyMappedHashMaps();
     }
 
     protected Decrypter(File input, File output, File data, int keyLength){
         this(input,output,data);
+        if(keyLength < 1){
+            throw new RuntimeException("Key should have length 1 at least");
+        }
         this.keyLength = keyLength;
     }
 
@@ -202,7 +206,12 @@ abstract public class Decrypter implements Analysis{
 
     @Override
     public void performDecryption() {
-        extractCharFrequency(this.input,this.charFrequencyDataHashMaps);
+        extractCharFrequency(this.data,this.charFrequencyDataHashMaps);
+        extractCharFrequency(this.input,this.charFrequencyInputHashMaps);
+        extractFrequenciesToStrings();
+        mapCharByFrequency();
+        writeDecryptedTextToFile();
+        printInfo();
     }
     public int getKeyLength(){
         return this.keyLength;
