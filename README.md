@@ -1,4 +1,4 @@
-# frequency-attack-on-vigenere-cipher-known-key-length
+# Frequency Attack on Vigenere Cipher Known Key length
 
 Ky program është realizuar nga Grupi 20 me anëtartët: Florian Saqipi, Genci Berisha, Fjolla Ajeti dhe Fortesa Cena.
 
