@@ -1,28 +1,32 @@
-# Frequency Attack on Vigenere Cipher Known Key length
+# Frequency Attack on Vigenere Cipher with Known Key Length
 
-Ky program është realizuar nga Grupi 20 me anëtartët: Florian Saqipi, Genci Berisha, Fjolla Ajeti dhe Fortesa Cena.
+This project focuses on performing a frequency attack on a Vigenere cipher with a known key length. Given a large input text file encrypted using the Vigenere cipher, the goal is to decipher the text by treating each character of the key as a separate cipher. By employing clever techniques, we conduct frequency analysis on each character of the key, decrypting the text character by character and eventually producing the decrypted output in a plain text file.
 
---Aplikacioni është realizuar përmes gjuhës programuese Java dhe ka libraritë e nevojshme të Java-fx për
-  zgjerim të mëtejshëm. Aplikacioni për momentin punon me dy gjuhë pra Shqipe dhe Angleze, mirëpo shtimi
-  i një gjuhe të re merr fare pak kohë për shkak të planifikimit me kujdes të aplikacionit.
+## Overview
 
---Aplikacioni i krijuar ka për qëllim sulmin e një file të enkriptuar përmes Vigenere Cipher me gjatësi
-  të njohur të çelësit, duke përdorur analizën frekuencorë të karaktereve. Pra, aplikacioni analizon tekstin të
-  ndarë si lloj kolonash në bazë të gjatësisë së çelësit, pastaj procesi thjeshtohet pasi për secilën kolonë
-  thjesht realizohet analiza frekuencore për një cipher monoalfabetik. Në mënyrë që ta dekriptoj këtë file
-  dhe ta shkruaj rezultatin në një output file.
+The Vigenere cipher with a known key length can be equated to a monoalphabetic substitution cipher for each character of the key. Leveraging frequency analysis, we identify the most frequent characters in the ciphertext and match them with the most common characters in the English or Albanian language. By pairing these characters, we derive the key used to encrypt the ciphertext. The decrypted text is then stored in an output text file, and in the console, simple statistical graphs and the deciphered key are printed.
 
---Input file në verzionin Shqip src/main/java/com/example/decrypter/files/input_shqip.txt
---Input file në verzionin Anglez gjendet në lokacionin src/main/java/com/example/decrypter/files/input.txt
+## Technical Details
 
---Rezultati shfaqet ne output file në lokacionin src/main/java/com/example/decrypter/files/output.txt
+- **Language**: Java
+- **File Handling**: Utilizes `FileReader` and `FileWriter` classes for efficient scanning and writing of files word by word.
+- **Architecture**: Implements an interface and an abstract class to define most decryption steps, allowing for easy extension and language addition by other users.
+- **Design Pattern**: Utilizes Factories for improved application architecture.
+- **Algorithm**: Employs an array of HashMaps, each corresponding to a character in the key, to track character counts in the ciphertext. Frequency analysis is performed for each substitution cipher. These counts are then mapped to the frequency of characters in the target language, efficiently deriving the key for each character of the Vigenere key.
 
---Programi mund të ekzekutohet duke bërë run Main file në lokacionin src/main/java/com/example/decrypter/Main.java
+## Requirements and How to Run
 
---Programi për momentin mund të dekriptoj dy files një në Gjuhën Angleze dhe tjetrën në Gjuhën Shqipe
-  të dyja e shkruajnë tekstin e dekriptuar në output file.
+- **Java Version**: Compatible with any Java JDK. Alternatively, can be run using IntelliJ IDEA software.
+- **Execution**: Run the Java application through your preferred method, providing the input text file and specifying the key length.
+- **Output**: The decrypted text will be saved in an output text file, and statistical graphs along with the deciphered key will be displayed in the console.
 
---Nëse duam të dekriptojmë textin në Gjuhën Shqipe dekomentojmë line 24 dhe komentojmë line 23 në Main file
---Nëse duam të dekriptojmë textin në Gjuhën Angleze dekomentojmë line 23 dhe komentojmë line 24 në Main file
+## Contributors
 
---Pas ekzekutimit do shkruhet teksti i dekriptuar në output file si dhe shfaqen statistika dhe grafe në konsolë, pra informata.
+- [Florian Saqipi](https://github.com/floriansaqipi/)
+- [Genci Berisha](https://github.com/neg-c)
+- [Fjolla Ajeti](https://github.com/fjolla-ajeti)
+- [Fortesa Cena](https://github.com/Fortesacena)
+
+## Acknowledgment
+
+We acknowledge the support and contributions of all contributors to this project, enabling the development and enhancement of this frequency attack on Vigenere cipher with known key length.
